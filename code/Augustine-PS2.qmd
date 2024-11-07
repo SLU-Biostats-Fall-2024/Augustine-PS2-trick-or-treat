@@ -5,23 +5,29 @@ format: html
 editor: visual
 ---
 
-setting things up 
+setting things up
+
 ```{r}
 rm(list=ls())
 library(tidyverse)
 library(here)
 ```
+
 reading in the data
+
 ```{r}
 halloween<-read.csv(here("data", "Halloween_data_PS2.csv"))
 ```
 
 using 2 function to examine that data
+
 ```{r}
 glimpse(halloween)
 summary(halloween)
 ```
-fixing the data 
+
+fixing the data
+
 ```{r}
 halloween<- halloween %>%
   mutate(
@@ -35,7 +41,9 @@ levels(halloween$costume)
 levels(halloween$sugar_high)
 levels(halloween$Costume_type)
 ```
+
 fixing the differences in names in data
+
 ```{r}
 fix_witch <- which(halloween$costume %in% c("witch", "Witch", "witch "))
 halloween$costume[fix_witch] <- "witch"
@@ -64,7 +72,8 @@ halloween$Costume_type<- factor(halloween$Costume_type)
 halloween$sugar_high<- factor(halloween$sugar_high)
 ```
 
-task #7 making a scatterplot to look like the one provided, using min_temp_trick_treat_C to show temperature and viewing that across age 
+task #7 making a scatterplot to look like the one provided, using min_temp_trick_treat_C to show temperature and viewing that across age
+
 ```{r}
 ggplot(halloween, aes(x = age, y = min_temp_trick_treat_C)) +
   geom_point(aes(color = Costume_type, shape = Costume_type), size = 3, alpha = 0.7)  +  
@@ -74,13 +83,13 @@ ggplot(halloween, aes(x = age, y = min_temp_trick_treat_C)) +
   ) +
   theme_bw() 
 ```
-task #8 filtering out 10 year old and older who ate 100 g or more of candy and making a histogram to match the one provided 
+
+task #8 filtering out 10 year old and older who ate 100 g or more of candy and making a histogram to match the one provided
 
 ```{r}
 candygoblins <- halloween %>%
   filter(age >= 10, g_candy_consumed >= 100)
 ```
-
 
 ```{r}
 ggplot(candygoblins, aes(x = candy_pieces)) +
@@ -91,8 +100,9 @@ ggplot(candygoblins, aes(x = candy_pieces)) +
   ) +
   theme_minimal() 
 ```
-task 9:
-summary statics of age and grams of candy consumed showing standard deviation and means then viewing in another tab 
+
+task 9: summary statics of age and grams of candy consumed showing standard deviation and means then viewing in another tab
+
 ```{r}
 halloween %>%
   group_by(sugar_high) %>%
@@ -105,8 +115,8 @@ halloween %>%
   View()
 ```
 
-task 10 
-A box and whisker plot showing amount of candy consumed by children with scary, not scary, and uncertain costume types and wether that child got a sugar high from candy eaten
+task 10 A box and whisker plot showing amount of candy consumed by children with scary, not scary, and uncertain costume types and wether that child got a sugar high from candy eaten
+
 ```{r}
 ggplot(halloween, aes(x = Costume_type, y = g_candy_consumed)) +
   geom_boxplot(alpha = 0.7, outlier.color = "orange")+
@@ -124,5 +134,4 @@ ggplot(halloween, aes(x = Costume_type, y = g_candy_consumed)) +
   )
 ```
 
-task 13
-I will be the yellow Teletubbie with 3 of my friends so not scary.    
+task 13 I will be the yellow Teletubbie with 3 of my friends so not scary.

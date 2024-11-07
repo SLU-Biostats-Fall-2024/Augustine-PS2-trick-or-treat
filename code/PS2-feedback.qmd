@@ -1,0 +1,24 @@
+---
+title: "PS2-feedback"
+format: html
+editor: visual
+---
+
+## PS 2 feedback
+ 
+You are good at being efficient, but I'd like to see more commentary on your code outside of code chunks. Imagine you came back to this project in a year - what would you want to know about what you were thinking?
+
+For example, you ran code to examine the data in lines 24-27, but what did you LEARN about the data by running those functions? 
+
+Why did you choose to make costume a factor variable? If you had spent more time actually looking at the data, I don't think you would have made that choice. Does it really make sense for a factor to have 46 levels?
+
+Also, you didn't do any error checking on any of the numeric variables.
+
+In figure 1, your factor levels don't match mine.
+
+In figure 2, I don't mind that you used theme_minimal() aesthetically, but the instructions were to match my figure, which does not use a theme.
+
+You are doing a NICE JOB of spacing your code for easy readability.
+
+Were you really a yellow teletubbie?
+
